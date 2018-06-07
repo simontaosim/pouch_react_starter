@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import PouchDB from 'pouchdb';
+import 'semantic-ui-css/semantic.min.css';
+import AppRoute from './routes';
+
 PouchDB.debug.enable('*');
 var db = new PouchDB('http://localhost:5984/kittens');
 db.info().then(function (info) {
@@ -24,5 +25,5 @@ db.put(doc);
 db.get('mittens').then(function (doc) {
     console.log(doc);
   });
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppRoute />, document.getElementById('root'));
 registerServiceWorker();
