@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import AppRoute from './routes';
 
 PouchDB.debug.enable('*');
-var db = new PouchDB('http://localhost:5984/kittens');
+var db = new PouchDB('apps');
 db.info().then(function (info) {
     console.log(info);
   });
