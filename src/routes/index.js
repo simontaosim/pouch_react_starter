@@ -1,33 +1,27 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TestQiniu from "./testQiniu/index.js";
+import MainContainer from "../components/MainContainer";
+import Recommands from "../components/Recommands.js";
+import { Header } from 'semantic-ui-react'
+
 const AppRoute = () => (
   <Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/imgUpload">imgUpload</Link>
-        </li>
-        <li>
-          <Link to="/topics">Topics</Link>
-        </li>
-      </ul>
-
-      <hr />
+      <MainContainer>
 
       <Route exact path="/" component={Home} />
-      <Route path="/imgUpload" component={About} />
+      <Route path="/cate" component={About} />
       <Route path="/topics" component={Topics} />
-    </div>
+      <Route path="/tags" component={Topics} />
+      <Route path="/search" component={Topics} />
+      </MainContainer>
   </Router>
 );
 
 const Home = () => (
   <div>
-    <h2>Home</h2>
+    <Header as='h2' content='站长推荐' />
+    <Recommands />
   </div>
 );
 
