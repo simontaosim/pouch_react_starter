@@ -1,19 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import TestQiniu from "./testQiniu/index.js";
 import MainContainer from "../components/MainContainer";
 import Recommands from "../components/Recommands.js";
 import { Header } from 'semantic-ui-react'
+import VideoPlayer from "../components/VideoPlayer.js";
 
 const AppRoute = () => (
   <Router>
       <MainContainer>
-
+      <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/cate" component={About} />
       <Route path="/topics" component={Topics} />
       <Route path="/tags" component={Topics} />
       <Route path="/search" component={Topics} />
+      <Route exact path="/video/:id" component={Video} />
+      </Switch>
       </MainContainer>
   </Router>
 );
@@ -28,6 +31,12 @@ const Home = () => (
 const About = () => (
   <div>
      <TestQiniu />
+  </div>
+);
+const Video = ({match}) => (
+  <div>
+     <Header as='h2' content={'站长推荐'+match.params.id} />
+     <VideoPlayer />
   </div>
 );
 
